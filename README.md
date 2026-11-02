@@ -85,6 +85,18 @@ The website contains the following pages:
 # Part 3 Changelog
 
 ## JavaScript and Interactive Elements
+### Part 3 – Website Enhancements
+
+- Added interactive FAQ accordion functionality.
+- Implemented an image gallery lightbox.
+- Added dynamic resource search functionality.
+- Improved website SEO with page titles, meta descriptions and image alt text.
+- Added sitemap.xml and robots.txt files.
+- Implemented form validation for the enquiry and contact forms.
+- Added AJAX form submission using Netlify Forms.
+- Tested both forms and confirmed that submissions are received through the Netlify dashboard.
+- Improved website responsiveness and user experience.
+- Deployed the updated website using Netlify.
 
 - Added an external JavaScript file named `script.js`.
 - Connected JavaScript to the website pages.
