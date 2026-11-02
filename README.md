@@ -187,8 +187,11 @@ The website contains the following pages:
 
 ---
 
-## Project Repository
 
-GitHub Repository: Add your GitHub repository URL here.
 
-Published Website: Add your deployed website URL here.
+## Project Links
+
+**Live Website:** https://mind-strong.netlify.app
+
+**GitHub Repository:** https://github.com/Mihle-Danster/mind-strong
+
