@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,8 +14,22 @@
     <!-- Makes the website responsive on phones and tablets -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Title shown in the browser tab -->
-    <title>Enquiry | Mind Strong</title>
+    <!-- SEO: Browser title -->
+    <title>Make an Enquiry | Mind Strong</title>
+
+    <!-- SEO: Page description -->
+    <meta name="description" content="Contact Mind Strong with enquiries about mental health resources, support information, volunteering opportunities and sponsorship.">
+
+    <!-- SEO: Keywords -->
+    <meta name="keywords" content="Mind Strong enquiries, mental health support, volunteering, sponsorship, mental health resources">
+
+    <!-- SEO: Author -->
+    <meta name="author" content="Mind Strong">
+
+    <!-- Social media information -->
+    <meta property="og:title" content="Make an Enquiry | Mind Strong">
+    <meta property="og:description" content="Get in touch with Mind Strong about resources, support and opportunities.">
+    <meta property="og:type" content="website">
 
     <!-- Connects this page to the external CSS file -->
     <link rel="stylesheet" href="style.css">
@@ -58,7 +73,7 @@
                 </li>
 
                 <li>
-                    <a href="enquiry.html">Enquiry</a>
+                    <a href="enquiry.html" aria-current="page">Enquiry</a>
                 </li>
 
                 <li>
@@ -83,8 +98,9 @@
             <h1>Make an Enquiry</h1>
 
             <p>
-                Contact Mind Strong if you have a general question
-                about our website, resources or support information.
+                Contact Mind Strong if you have questions about our
+                resources, support information or opportunities to
+                get involved.
             </p>
 
         </div>
@@ -101,8 +117,9 @@
         <h2>Enquiry Form</h2>
 
         <p>
-            Use the form below to make a general enquiry about
-            Mind Strong or the information provided on the website.
+            Complete the form below and provide details about
+            your enquiry. We will prepare an email containing
+            your information.
         </p>
 
 
@@ -110,7 +127,7 @@
              ENQUIRY FORM
              ========================= -->
 
-        <form>
+        <form id="enquiryForm">
 
 
             <!-- Full name -->
@@ -124,6 +141,9 @@
                 id="name"
                 name="name"
                 placeholder="Enter your full name"
+                minlength="2"
+                maxlength="80"
+                autocomplete="name"
                 required
             >
 
@@ -139,6 +159,7 @@
                 id="email"
                 name="email"
                 placeholder="Enter your email address"
+                autocomplete="email"
                 required
             >
 
@@ -164,11 +185,19 @@
                 </option>
 
                 <option value="resources">
-                    Resources
+                    Mental Health Resources
                 </option>
 
                 <option value="support">
                     Support Information
+                </option>
+
+                <option value="volunteer">
+                    Volunteering Opportunities
+                </option>
+
+                <option value="sponsor">
+                    Sponsorship Opportunities
                 </option>
 
                 <option value="feedback">
@@ -188,6 +217,9 @@
                 id="message"
                 name="message"
                 placeholder="Enter your enquiry here"
+                minlength="10"
+                maxlength="1500"
+                rows="6"
                 required
             ></textarea>
 
@@ -202,6 +234,19 @@
 
 
         <!-- =========================
+             FORM RESPONSE
+             ========================= -->
+
+        <div
+            id="enquiryResponse"
+            class="content-box"
+            role="status"
+            aria-live="polite"
+            hidden
+        ></div>
+
+
+        <!-- =========================
              INFORMATION NOTICE
              ========================= -->
 
@@ -210,9 +255,10 @@
             <strong>Important:</strong>
 
             <p>
-                This form is for general website enquiries.
-                It should not be used for emergencies or situations
-                that require immediate professional assistance.
+                This form is for general enquiries and is not
+                monitored as an emergency service. It should not
+                be used for situations that require immediate
+                professional assistance.
             </p>
 
         </div>
@@ -232,6 +278,9 @@
 
     </footer>
 
+
+    <!-- Connect JavaScript -->
+    <script src="script.js" defer></script>
 
 </body>
 

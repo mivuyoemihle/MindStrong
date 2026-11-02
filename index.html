@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,8 +11,22 @@
     <!-- Makes the website responsive on phones and tablets -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Title shown in the browser tab -->
-    <title>Mind Strong | Men's Mental Health</title>
+    <!-- SEO: Page title -->
+    <title>Mind Strong | Men's Mental Health and Wellbeing</title>
+
+    <!-- SEO: Page description -->
+    <meta name="description" content="Mind Strong provides information about men's mental health, emotional wellbeing, self-care and support resources in South Africa.">
+
+    <!-- SEO: Relevant keywords -->
+    <meta name="keywords" content="men's mental health, mental wellbeing, mental health support, self-care, emotional wellbeing, South Africa">
+
+    <!-- SEO: Website author -->
+    <meta name="author" content="Mind Strong">
+
+    <!-- Social media sharing information -->
+    <meta property="og:title" content="Mind Strong | Men's Mental Health">
+    <meta property="og:description" content="Explore mental health information, wellbeing resources and support for men.">
+    <meta property="og:type" content="website">
 
     <!-- Connects this page to the CSS file -->
     <link rel="stylesheet" href="style.css">
@@ -36,7 +52,7 @@
             <ul>
 
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="index.html" aria-current="page">Home</a>
                 </li>
 
                 <li>
@@ -183,26 +199,71 @@
                     and seeking appropriate support when needed.
                 </p>
 
-                <!-- Website image -->
-               <!-- Responsive website image -->
-<!-- Responsive website image -->
-<!-- Responsive website image -->
-<img
-    src="images/nik-shuliahin-unsplash - medium.jpg"
-    srcset="
-        images/nik-shuliahin-unsplash - small.jpg 480w,
-        images/nik-shuliahin-unsplash - medium.jpg 800w,
-        images/nik-shuliahin-unsplash - large.jpg 1200w
-    "
-    sizes="(max-width: 600px) 100vw, 90vw"
-    alt="A man outdoors reflecting on his mental wellbeing"
->
+                <!-- Responsive website image with lightbox -->
+
+                <a
+                    href="images/nik-shuliahin-unsplash - large.jpg"
+                    class="lightbox-trigger"
+                    aria-label="Click to view the mental wellbeing image in a larger display"
+                >
+
+                    <img
+                        src="images/nik-shuliahin-unsplash - medium.jpg"
+                        srcset="
+                            images/nik-shuliahin-unsplash - small.jpg 480w,
+                            images/nik-shuliahin-unsplash - medium.jpg 800w,
+                            images/nik-shuliahin-unsplash - large.jpg 1200w
+                        "
+                        sizes="(max-width: 600px) 100vw, 90vw"
+                        alt="A man outdoors reflecting on his mental wellbeing"
+                        loading="lazy"
+                    >
+
+                </a>
+
+                <p class="image-instruction">
+                    Click the image to view it in a larger size.
+                </p>
 
             </div>
 
         </section>
 
     </main>
+
+
+    <!-- =========================
+         IMAGE LIGHTBOX
+         ========================= -->
+
+    <div
+        class="lightbox"
+        id="imageLightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Expanded image view"
+        aria-hidden="true"
+    >
+
+        <!-- Close button -->
+        <button
+            type="button"
+            class="lightbox-close"
+            id="lightboxClose"
+            aria-label="Close expanded image"
+        >
+            &times;
+        </button>
+
+        <!-- Enlarged image -->
+        <img
+            src=""
+            alt=""
+            class="lightbox-image"
+            id="lightboxImage"
+        >
+
+    </div>
 
 
     <!-- =========================
@@ -216,6 +277,10 @@
         </p>
 
     </footer>
+
+
+    <!-- Connect JavaScript -->
+    <script src="script.js" defer></script>
 
 </body>
 

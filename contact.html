@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,8 +14,22 @@
     <!-- Makes the website responsive on phones and tablets -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Title shown in the browser tab -->
-    <title>Contact | Mind Strong</title>
+    <!-- SEO: Browser title -->
+    <title>Contact Mind Strong | Men's Mental Health</title>
+
+    <!-- SEO: Page description -->
+    <meta name="description" content="Contact Mind Strong with general questions, feedback or messages about men's mental health and wellbeing.">
+
+    <!-- SEO: Keywords -->
+    <meta name="keywords" content="contact Mind Strong, men's mental health, mental wellbeing, contact information, mental health South Africa">
+
+    <!-- SEO: Author -->
+    <meta name="author" content="Mind Strong">
+
+    <!-- Social media information -->
+    <meta property="og:title" content="Contact Mind Strong">
+    <meta property="og:description" content="Get in touch with Mind Strong.">
+    <meta property="og:type" content="website">
 
     <!-- Connects this page to the external CSS file -->
     <link rel="stylesheet" href="style.css">
@@ -62,7 +77,7 @@
                 </li>
 
                 <li>
-                    <a href="contact.html">Contact</a>
+                    <a href="contact.html" aria-current="page">Contact</a>
                 </li>
 
             </ul>
@@ -83,8 +98,8 @@
             <h1>Contact Mind Strong</h1>
 
             <p>
-                Find our contact information and learn when
-                you can reach us.
+                Find our contact information, send us a message
+                and learn when you can reach us.
             </p>
 
         </div>
@@ -101,8 +116,9 @@
         <h2>Get In Touch</h2>
 
         <p>
-            If you have a general question about Mind Strong,
-            you can use the contact information below.
+            If you have a general question, suggestion or comment
+            about Mind Strong, you can use the contact information
+            below or complete our contact form.
         </p>
 
 
@@ -120,7 +136,9 @@
                 <h3>Email</h3>
 
                 <p>
-                    info@mindstrong.example
+                    <a href="mailto:info@mindstrong.example">
+                        info@mindstrong.example
+                    </a>
                 </p>
 
             </article>
@@ -133,7 +151,9 @@
                 <h3>Telephone</h3>
 
                 <p>
-                    +27 12 000 000
+                    <a href="tel:+27120000000">
+                        +27 12 000 000
+                    </a>
                 </p>
 
             </article>
@@ -181,16 +201,156 @@
 
 
         <!-- =========================
+             CONTACT FORM
+             ========================= -->
+
+        <section class="content-box">
+
+            <h2>Send Us a Message</h2>
+
+            <p>
+                Complete the form below to send a general message
+                or provide feedback about our website.
+            </p>
+
+
+            <form id="contactForm">
+
+
+                <!-- Full name -->
+
+                <label for="contactName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="contactName"
+                    name="contactName"
+                    placeholder="Enter your full name"
+                    minlength="2"
+                    maxlength="80"
+                    autocomplete="name"
+                    required
+                >
+
+
+                <!-- Email address -->
+
+                <label for="contactEmail">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="contactEmail"
+                    name="contactEmail"
+                    placeholder="Enter your email address"
+                    autocomplete="email"
+                    required
+                >
+
+
+                <!-- Telephone number -->
+
+                <label for="contactPhone">
+                    Telephone Number (Optional)
+                </label>
+
+                <input
+                    type="tel"
+                    id="contactPhone"
+                    name="contactPhone"
+                    placeholder="Example: +27 12 345 6789"
+                    autocomplete="tel"
+                >
+
+
+                <!-- Message type -->
+
+                <label for="messageType">
+                    Message Type
+                </label>
+
+                <select
+                    id="messageType"
+                    name="messageType"
+                    required
+                >
+
+                    <option value="">
+                        Select message type
+                    </option>
+
+                    <option value="General Message">
+                        General Message
+                    </option>
+
+                    <option value="Website Feedback">
+                        Website Feedback
+                    </option>
+
+                    <option value="Suggestion">
+                        Suggestion
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+
+                <!-- Message -->
+
+                <label for="contactMessage">
+                    Your Message
+                </label>
+
+                <textarea
+                    id="contactMessage"
+                    name="contactMessage"
+                    placeholder="Write your message here..."
+                    minlength="10"
+                    maxlength="1500"
+                    rows="6"
+                    required
+                ></textarea>
+
+
+                <!-- Submit button -->
+
+                <button type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+
+            <!-- Form response -->
+
+            <div
+                id="contactResponse"
+                role="status"
+                aria-live="polite"
+                hidden
+            ></div>
+
+        </section>
+
+
+        <!-- =========================
              ENQUIRY LINK
              ========================= -->
 
         <section class="content-box">
 
-            <h2>Have a Question?</h2>
+            <h2>Have a Specific Enquiry?</h2>
 
             <p>
-                If you would like to send us a general enquiry,
-                use our enquiry form.
+                If you have questions about our resources,
+                support information, volunteering or sponsorship,
+                use our dedicated enquiry form.
             </p>
 
             <a class="button" href="enquiry.html">
@@ -214,6 +374,9 @@
 
     </footer>
 
+
+    <!-- Connect JavaScript -->
+    <script src="script.js" defer></script>
 
 </body>
 

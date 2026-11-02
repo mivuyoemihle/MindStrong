@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,8 +11,22 @@
     <!-- Makes the website responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Browser title -->
-    <title>Resources | Mind Strong</title>
+    <!-- SEO: Browser title -->
+    <title>Men's Mental Health Resources | Mind Strong</title>
+
+    <!-- SEO: Page description -->
+    <meta name="description" content="Explore men's mental health resources, educational articles, self-care advice and trusted mental wellbeing information from Mind Strong.">
+
+    <!-- SEO: Relevant keywords -->
+    <meta name="keywords" content="men's mental health resources, mental health articles, self-care tips, mental wellbeing guides, mental health information South Africa">
+
+    <!-- SEO: Website author -->
+    <meta name="author" content="Mind Strong">
+
+    <!-- Social media sharing information -->
+    <meta property="og:title" content="Mental Health Resources | Mind Strong">
+    <meta property="og:description" content="Explore mental health articles, self-care advice and useful wellbeing resources.">
+    <meta property="og:type" content="website">
 
     <!-- Connect this page to the external CSS file -->
     <link rel="stylesheet" href="style.css">
@@ -48,7 +64,7 @@
                 </li>
 
                 <li>
-                    <a href="resources.html">Resources</a>
+                    <a href="resources.html" aria-current="page">Resources</a>
                 </li>
 
                 <li>
@@ -92,40 +108,56 @@
 
     <main class="container">
 
-        <div class="cards">
+        <!-- RESOURCE SEARCH BAR -->
+
+        <div class="resource-search">
+
+            <label for="resourceSearch">Search Resources</label>
+
+            <input
+                type="search"
+                id="resourceSearch"
+                placeholder="Search articles, guides, self-care..."
+                aria-label="Search mental health resources"
+            >
+
+            <p id="searchMessage" aria-live="polite"></p>
+
+        </div>
 
 
-            <!-- =========================
-                 ARTICLES
-                 ========================= -->
+        <!-- RESOURCE CARDS -->
+
+        <div class="cards" id="resourceCards">
+
+            <!-- ARTICLES -->
 
             <article class="card">
 
-                <h3>
-                    Articles and Advice
-                </h3>
+                <h3>Articles and Advice</h3>
 
                 <p>
                     Learn about topics such as stress, emotional wellbeing,
                     relationships, work pressure and asking for help.
                 </p>
 
-                <a class="button" href="#">
+                <a
+                    class="button"
+                    href="https://www.mind.org.uk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Read More
                 </a>
 
             </article>
 
 
-            <!-- =========================
-                 GUIDES
-                 ========================= -->
+            <!-- GUIDES -->
 
             <article class="card">
 
-                <h3>
-                    Mental Health Guides
-                </h3>
+                <h3>Mental Health Guides</h3>
 
                 <p>
                     Explore simple educational information about mental
@@ -133,22 +165,23 @@
                     wellbeing.
                 </p>
 
-                <a class="button" href="#">
+                <a
+                    class="button"
+                    href="https://www.who.int/health-topics/mental-health"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     View Guides
                 </a>
 
             </article>
 
 
-            <!-- =========================
-                 SELF-CARE
-                 ========================= -->
+            <!-- SELF-CARE -->
 
             <article class="card">
 
-                <h3>
-                    Self-Care Tips
-                </h3>
+                <h3>Self-Care Tips</h3>
 
                 <p>
                     Learn about general wellbeing habits such as healthy
@@ -156,22 +189,23 @@
                     social connection.
                 </p>
 
-                <a class="button" href="#">
+                <a
+                    class="button"
+                    href="https://www.nhs.uk/mental-health/self-help/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Learn More
                 </a>
 
             </article>
 
 
-            <!-- =========================
-                 USEFUL LINKS
-                 ========================= -->
+            <!-- USEFUL LINKS -->
 
             <article class="card">
 
-                <h3>
-                    Useful Links
-                </h3>
+                <h3>Useful Links</h3>
 
                 <p>
                     Find reliable health and support organisations that
@@ -179,13 +213,25 @@
                     assistance.
                 </p>
 
-                <a class="button" href="#">
+                <a
+                    class="button"
+                    href="https://www.sadag.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Useful Links
                 </a>
 
             </article>
 
         </div>
+
+
+        <!-- NO SEARCH RESULTS MESSAGE -->
+
+        <p id="noResults" class="notice" hidden>
+            No resources were found. Try using a different search term.
+        </p>
 
 
         <!-- =========================
@@ -204,6 +250,12 @@
                 appropriate professional or someone you trust.
             </p>
 
+            <p>
+                Visit our
+                <a href="services.html">Support page</a>
+                to learn more about available support options.
+            </p>
+
         </section>
 
     </main>
@@ -220,6 +272,10 @@
         </p>
 
     </footer>
+
+
+    <!-- Connect JavaScript -->
+    <script src="script.js" defer></script>
 
 </body>
 

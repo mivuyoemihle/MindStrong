@@ -1,8 +1,15 @@
+
+/* =========================
+   MIND STRONG STYLESHEET
+   ========================= */
+
+
 /* =========================
    CSS RESET
    ========================= */
 
 /* Removes default browser spacing */
+
 * {
     margin: 0;
     padding: 0;
@@ -24,9 +31,17 @@ body {
 
 
 /* Makes images responsive */
+
 img {
     max-width: 100%;
     height: auto;
+}
+
+
+/* Removes default link underline when needed */
+
+a {
+    color: #12343b;
 }
 
 
@@ -123,9 +138,17 @@ nav a:hover {
 }
 
 
+/* Current navigation page */
+
+nav a[aria-current="page"] {
+    color: #76c7c0;
+    font-weight: bold;
+}
+
+
 /* Navigation keyboard focus */
 
-nav a:focus {
+nav a:focus-visible {
     outline: 2px solid #76c7c0;
     outline-offset: 3px;
 }
@@ -194,7 +217,7 @@ nav a:focus {
 
 /* Button focus */
 
-.button:focus {
+.button:focus-visible {
     outline: 2px solid #12343b;
     outline-offset: 3px;
 }
@@ -346,6 +369,8 @@ textarea {
     border: 1px solid #ccc;
 
     border-radius: 0.3rem;
+
+    background-color: white;
 }
 
 
@@ -366,6 +391,15 @@ textarea:focus {
     outline: 2px solid #76c7c0;
 
     border-color: #12343b;
+}
+
+
+/* Invalid form fields */
+
+input:invalid:focus,
+select:invalid:focus,
+textarea:invalid:focus {
+    border-color: #b3261e;
 }
 
 
@@ -401,7 +435,7 @@ button:hover {
 
 /* Button focus */
 
-button:focus {
+button:focus-visible {
     outline: 2px solid #76c7c0;
     outline-offset: 3px;
 }
@@ -411,6 +445,32 @@ button:focus {
 
 button:active {
     transform: translateY(2px);
+}
+
+
+/* =========================
+   FORM RESPONSE MESSAGES
+   ========================= */
+
+#enquiryResponse,
+#contactResponse {
+    margin-top: 1.5rem;
+    padding: 1rem;
+
+    background-color: #dceff0;
+
+    border-left: 4px solid #12343b;
+
+    border-radius: 0.3rem;
+}
+
+
+/* Keep hidden response elements hidden */
+
+#enquiryResponse[hidden],
+#contactResponse[hidden],
+#noResults[hidden] {
+    display: none;
 }
 
 
@@ -430,6 +490,233 @@ button:active {
     margin: 1.5rem auto 0;
 
     border-radius: 0.6rem;
+}
+
+
+/* =========================
+   RESOURCE SEARCH
+   ========================= */
+
+.resource-search {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+
+/* Search label */
+
+.resource-search label {
+    margin-top: 0;
+}
+
+
+/* Search input */
+
+.resource-search input {
+    margin-top: 0.4rem;
+}
+
+
+/* Search result count */
+
+#searchMessage {
+    margin-top: 0.5rem;
+    color: #12343b;
+    font-size: 0.9rem;
+}
+
+
+/* No results message */
+
+#noResults {
+    margin-top: 1.5rem;
+}
+
+
+/* =========================
+   FAQ ACCORDION
+   ========================= */
+
+.accordion {
+    margin-top: 1.5rem;
+}
+
+
+/* Individual accordion item */
+
+.accordion-item {
+    background-color: white;
+    margin-bottom: 0.75rem;
+    border-radius: 0.4rem;
+    overflow: hidden;
+}
+
+
+/* Accordion question button */
+
+.accordion-question {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    text-align: left;
+
+    margin-top: 0;
+
+    padding: 1rem;
+
+    font-weight: bold;
+}
+
+
+/* Accordion symbol */
+
+.accordion-question span {
+    font-size: 1.4rem;
+}
+
+
+/* Accordion answer */
+
+.accordion-answer {
+    display: none;
+
+    padding: 1rem;
+
+    background-color: #f4f7f8;
+}
+
+
+/* Accordion answer paragraph */
+
+.accordion-answer p {
+    margin: 0;
+}
+
+
+/* =========================
+   IMAGE GALLERY
+   ========================= */
+
+/* Gallery layout */
+
+.gallery {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 1rem;
+
+    margin-top: 2rem;
+}
+
+
+/* Gallery images */
+
+.gallery img {
+    width: 100%;
+
+    height: 230px;
+
+    object-fit: cover;
+
+    border-radius: 0.5rem;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+/* Gallery hover */
+
+.gallery img:hover {
+    transform: scale(1.03);
+
+    opacity: 0.9;
+}
+
+
+/* =========================
+   IMAGE LIGHTBOX
+   ========================= */
+
+/* Dark background covering the screen */
+
+.lightbox {
+    display: none;
+
+    position: fixed;
+
+    z-index: 1000;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.9);
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 2rem;
+}
+
+
+/* Open lightbox */
+
+.lightbox.active {
+    display: flex;
+}
+
+
+/* Enlarged image */
+
+.lightbox-image {
+    max-width: 90%;
+
+    max-height: 85vh;
+
+    object-fit: contain;
+
+    border-radius: 0.4rem;
+}
+
+
+/* Lightbox close button */
+
+.lightbox-close {
+    position: absolute;
+
+    top: 1.5rem;
+
+    right: 2rem;
+
+    color: white;
+
+    background: none;
+
+    border: none;
+
+    font-size: 2.5rem;
+
+    cursor: pointer;
+}
+
+
+/* Close button hover */
+
+.lightbox-close:hover {
+    color: #76c7c0;
+
+    background: none;
 }
 
 
@@ -459,6 +746,12 @@ footer {
     /* Two cards per row on tablets */
 
     .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Two gallery images per row */
+
+    .gallery {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -518,6 +811,20 @@ footer {
     }
 
 
+    /* One gallery image per row */
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Smaller gallery images */
+
+    .gallery img {
+        height: 220px;
+    }
+
+
     /* Smaller page title */
 
     .page-title {
@@ -543,6 +850,43 @@ footer {
 
     form {
         padding: 1.25rem;
+    }
+
+
+    /* Adjust lightbox image */
+
+    .lightbox-image {
+        max-width: 100%;
+        max-height: 75vh;
+    }
+
+
+    /* Adjust close button */
+
+    .lightbox-close {
+        top: 0.5rem;
+        right: 1rem;
+    }
+
+}
+
+
+/* =========================
+   REDUCED MOTION ACCESSIBILITY
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
     }
 
 }
