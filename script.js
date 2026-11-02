@@ -1,4 +1,5 @@
 
+
 // =========================
 // MIND STRONG JAVASCRIPT
 // =========================
@@ -84,7 +85,6 @@ accordionButtons.forEach(function (button) {
 
         const isOpen = button.getAttribute("aria-expanded") === "true";
 
-
         // Close all answers first
         document.querySelectorAll(".accordion-answer").forEach(
             function (item) {
@@ -93,7 +93,6 @@ accordionButtons.forEach(function (button) {
 
             }
         );
-
 
         // Reset all question buttons
         accordionButtons.forEach(function (item) {
@@ -109,7 +108,6 @@ accordionButtons.forEach(function (button) {
             }
 
         });
-
 
         // Open the selected answer
         if (!isOpen && answer) {
@@ -150,7 +148,6 @@ if (lightbox && lightboxImage && lightboxClose && lightboxTrigger) {
     // Open the lightbox when the visitor clicks the image
     lightboxTrigger.addEventListener("click", function (event) {
 
-        // Prevent the link from opening the image separately
         event.preventDefault();
 
         // Get the large image from the link
@@ -174,14 +171,12 @@ if (lightbox && lightboxImage && lightboxClose && lightboxTrigger) {
 
     });
 
-
     // Close the lightbox using the close button
     lightboxClose.addEventListener("click", function () {
 
         closeLightbox();
 
     });
-
 
     // Close the lightbox when clicking the dark background
     lightbox.addEventListener("click", function (event) {
@@ -193,7 +188,6 @@ if (lightbox && lightboxImage && lightboxClose && lightboxTrigger) {
         }
 
     });
-
 
     // Close the lightbox using the Escape key
     document.addEventListener("keydown", function (event) {
@@ -208,7 +202,6 @@ if (lightbox && lightboxImage && lightboxClose && lightboxTrigger) {
         }
 
     });
-
 
     // Function to close the lightbox
     function closeLightbox() {
@@ -229,6 +222,81 @@ if (lightbox && lightboxImage && lightboxClose && lightboxTrigger) {
 
 
 // =========================
+// NETLIFY AJAX FORM FUNCTION
+// =========================
+
+async function submitNetlifyForm(form, responseElement, successMessage) {
+
+    const submitButton = form.querySelector(
+        'button[type="submit"]'
+    );
+
+    // Show a loading message
+    responseElement.textContent = "Submitting your message...";
+
+    responseElement.hidden = false;
+
+    // Prevent multiple submissions
+    if (submitButton) {
+
+        submitButton.disabled = true;
+
+    }
+
+    try {
+
+        // Convert the form information into URL-encoded data
+        const formData = new URLSearchParams(new FormData(form));
+
+        // Submit the form using AJAX
+        const response = await fetch("/", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+
+            body: formData.toString()
+
+        });
+
+        // Check whether Netlify accepted the submission
+        if (!response.ok) {
+
+            throw new Error("Form submission failed.");
+
+        }
+
+        // Display the success message
+        responseElement.textContent = successMessage;
+
+        // Clear the form after successful submission
+        form.reset();
+
+    } catch (error) {
+
+        // Display an error if submission fails
+        responseElement.textContent =
+            "Sorry, your message could not be submitted. Please try again later.";
+
+        console.error("Form error:", error);
+
+    } finally {
+
+        // Allow the visitor to submit again
+        if (submitButton) {
+
+            submitButton.disabled = false;
+
+        }
+
+    }
+
+}
+
+
+// =========================
 // ENQUIRY FORM FUNCTION
 // =========================
 
@@ -236,13 +304,12 @@ const enquiryForm = document.getElementById("enquiryForm");
 
 const enquiryResponse = document.getElementById("enquiryResponse");
 
-if (enquiryForm) {
+if (enquiryForm && enquiryResponse) {
 
-    enquiryForm.addEventListener("submit", function (event) {
+    enquiryForm.addEventListener("submit", async function (event) {
 
         // Prevent the default form submission
         event.preventDefault();
-
 
         // Check that all required fields are valid
         if (!enquiryForm.checkValidity()) {
@@ -253,16 +320,8 @@ if (enquiryForm) {
 
         }
 
-
-        // Get the information entered by the visitor
-        const name = document.getElementById("name").value.trim();
-
-        const email = document.getElementById("email").value.trim();
-
+        // Get the selected enquiry topic
         const topic = document.getElementById("topic").value;
-
-        const message = document.getElementById("message").value.trim();
-
 
         // Select a response based on the enquiry topic
         let responseMessage = "";
@@ -272,75 +331,58 @@ if (enquiryForm) {
             case "general":
 
                 responseMessage =
-                    "Thank you for your general enquiry. Your message is ready to be sent.";
+                    "Thank you for your general enquiry. Your message has been submitted successfully.";
 
                 break;
 
             case "resources":
 
                 responseMessage =
-                    "Thank you for your interest in our mental health resources. Your enquiry is ready to be sent.";
+                    "Thank you for your interest in our mental health resources. Your enquiry has been submitted successfully.";
 
                 break;
 
             case "support":
 
                 responseMessage =
-                    "Thank you for contacting us about support information. Your enquiry is ready to be sent.";
+                    "Thank you for contacting us about support information. Your enquiry has been submitted successfully.";
 
                 break;
 
             case "volunteer":
 
                 responseMessage =
-                    "Thank you for your interest in volunteering. Your enquiry is ready to be sent.";
+                    "Thank you for your interest in volunteering. Your enquiry has been submitted successfully.";
 
                 break;
 
             case "sponsor":
 
                 responseMessage =
-                    "Thank you for your interest in sponsorship. Your enquiry is ready to be sent.";
+                    "Thank you for your interest in sponsorship. Your enquiry has been submitted successfully.";
 
                 break;
 
             case "feedback":
 
                 responseMessage =
-                    "Thank you for providing website feedback. Your enquiry is ready to be sent.";
+                    "Thank you for providing website feedback. Your enquiry has been submitted successfully.";
 
                 break;
 
+            default:
+
+                responseMessage =
+                    "Thank you. Your enquiry has been submitted successfully.";
+
         }
 
-
-        // Display the response on the website
-        enquiryResponse.textContent = responseMessage;
-
-        enquiryResponse.hidden = false;
-
-
-        // Prepare the email information
-        const recipient = "mindstrong@gmail.com";
-
-        const subject = "Mind Strong Enquiry - " + topic;
-
-        const emailBody =
-            "Name: " + name + "\n" +
-            "Email: " + email + "\n" +
-            "Enquiry Topic: " + topic + "\n\n" +
-            "Message:\n" + message;
-
-
-        // Create an email link
-        const mailtoLink =
-            "mailto:" + recipient +
-            "?subject=" + encodeURIComponent(subject) +
-            "&body=" + encodeURIComponent(emailBody);
-
-
-        // Open the visitor's default email application
-        window.location.href = mailtoLink;
+        // Submit the enquiry using Netlify Forms
+        await submitNetlifyForm(
+            enquiryForm,
+            enquiryResponse,
+            responseMessage
+        );
 
     });
 
@@ -355,13 +397,12 @@ const contactForm = document.getElementById("contactForm");
 
 const contactResponse = document.getElementById("contactResponse");
 
-if (contactForm) {
+if (contactForm && contactResponse) {
 
-    contactForm.addEventListener("submit", function (event) {
+    contactForm.addEventListener("submit", async function (event) {
 
         // Prevent the default form submission
         event.preventDefault();
-
 
         // Validate the form
         if (!contactForm.checkValidity()) {
@@ -372,48 +413,21 @@ if (contactForm) {
 
         }
 
-
-        // Collect visitor information
-        const name = document.getElementById("contactName").value.trim();
-
-        const email = document.getElementById("contactEmail").value.trim();
-
-        const phone = document.getElementById("contactPhone").value.trim();
-
+        // Get the selected message type
         const messageType = document.getElementById("messageType").value;
 
-        const message = document.getElementById("contactMessage").value.trim();
+        // Prepare the confirmation message
+        const responseMessage =
+            "Thank you for contacting Mind Strong about " +
+            messageType +
+            ". Your message has been submitted successfully.";
 
-
-        // Prepare the email
-        const recipient = "mindstrong@gmail.com";
-
-        const subject = "Mind Strong Contact Message - " + messageType;
-
-        const emailBody =
-            "Name: " + name + "\n" +
-            "Email: " + email + "\n" +
-            "Telephone: " + (phone || "Not provided") + "\n" +
-            "Message Type: " + messageType + "\n\n" +
-            "Message:\n" + message;
-
-
-        // Create the email link
-        const mailtoLink =
-            "mailto:" + recipient +
-            "?subject=" + encodeURIComponent(subject) +
-            "&body=" + encodeURIComponent(emailBody);
-
-
-        // Display confirmation message
-        contactResponse.textContent =
-            "Your message has been prepared. Your email application will open so you can send it.";
-
-        contactResponse.hidden = false;
-
-
-        // Open the visitor's email application
-        window.location.href = mailtoLink;
+        // Submit the contact message using Netlify Forms
+        await submitNetlifyForm(
+            contactForm,
+            contactResponse,
+            responseMessage
+        );
 
     });
 
